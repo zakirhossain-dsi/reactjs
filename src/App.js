@@ -1,32 +1,14 @@
 import React from 'react';
-import C from './ch8/constants';
-import {store} from "./ch8/store";
-import uuid from 'uuid';
+import storeFactory from "./ch8/store";
+import {addColor} from "./ch8/actions";
+import {initialState} from "./ch8/state";
 
 class App extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
     render() {
+        //const initialData = localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : initialState;
+        const store = storeFactory(initialState);
 
-        const unsubscribeLogger = store.subscribe( () => localStorage['redux-store'] = JSON.stringify(store.getState()));
-
-        store.dispatch({
-            type: C.ADD_COLOR,
-            id: uuid.v4(),
-            title: "Party Pink",
-            color: "#F142FF",
-            timestamp: "Thu Mar 10 2016 01:11:12 GMT-0800 (PST)"
-        });
-
-        store.dispatch({
-            type: C.RATE_COLOR,
-            id: "2222e1p5-3abl-0p523-30e4-8001l8yf2222",
-            rating: 5
-        });
-
-        console.log(store.getState());
+        store.dispatch(addColor("#FFFFFF","Bright White"));
 
         return "";
     }
