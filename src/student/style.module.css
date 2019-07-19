@@ -1,0 +1,14 @@
+label{
+    display: block;
+    margin-bottom: 3px;
+}
+input,select,textarea{
+    margin-bottom: 10px;
+}
+
+.bigblue {
+    color: DodgerBlue;
+    padding: 40px;
+    font-family: Arial;
+    text-align: center;
+}
