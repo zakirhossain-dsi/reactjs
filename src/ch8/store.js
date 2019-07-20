@@ -5,9 +5,8 @@ function logger (store) {
     return function (next) {
         return function (action) {
             console.groupCollapsed('dispatching', action.type);
-            console.log('logger ', next);
             next(action);
-            console.log('logger ', store.getState());
+            console.log(store.getState());
             console.groupEnd();
         }
     }
@@ -16,7 +15,6 @@ function logger (store) {
 function saver(store){
     return function (next) {
         return function (action) {
-            console.log("Saver: ", next);
             next(action);
             localStorage['redux-store'] = JSON.stringify(store.getState());
         }
