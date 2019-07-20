@@ -1,21 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import StarRating from "./StarRating";
 import 'bootstrap/dist/css/bootstrap.css';
 import { sortFunction} from '../lib/array-helpers';
 import {rateColor, removeColor} from "../ch8/actions";
 
-export const ColorList = ({store}) => {
+export const ColorList = (props, {store}) => {
     const { colors, sort} = store.getState();
     const sortedColors = [...colors].sort(sortFunction(sort));
     return <div>
         {
-            colors.length === 0 ? <p>No color Listed. (Add a color)</p> :
+            sortedColors.length === 0 ? <p>No color Listed. (Add a color)</p> :
                 sortedColors.map(color => <Color key={color.id} {...color}
                                                 onRate={rating => store.dispatch(rateColor(color.id, rating))}
                                                 onRemove={() => store.dispatch(removeColor(color.id))}/>)
         }
     </div>
 };
+
+
+ColorList.contextTypes = {
+    store: PropTypes.object
+};
+
 
 export const Color = ({title, color, rating=0, onRemove=f=>f, onRate=f=>f}) =>
     <section className='color'>

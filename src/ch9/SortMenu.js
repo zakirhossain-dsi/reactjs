@@ -9,7 +9,7 @@ const options = {
     rating: "SORTED_BY_RATING"
 };
 
-const SortMenu = ({store}) =>
+const SortMenu = (props, {store}) =>
     <nav className="menu">
         <h1>Sort Colors</h1>
         {Object.keys(options).map((item, i) =>
@@ -26,6 +26,10 @@ const SortMenu = ({store}) =>
 SortMenu.propTypes = {
     sort: PropTypes.string,
     onSelect: PropTypes.func
+};
+
+SortMenu.contextTypes = {
+    store: PropTypes.object
 };
 
 export default SortMenu

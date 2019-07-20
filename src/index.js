@@ -10,8 +10,7 @@ import './index.css';
 
 const store = storeFactory(initialState);
 
-const render = ()=> ReactDOM.render(<App store={store}/>, document.getElementById('root'));
-store.subscribe(render);
+const render = ()=> ReactDOM.render(<App store={store} />, document.getElementById('root'));
 render();
 
 serviceWorker.unregister();
