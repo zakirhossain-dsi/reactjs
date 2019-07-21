@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {AddColorForm} from "./AddColorForm";
-import {ColorList} from "./ColorList";
-import SortMenu from "./SortMenu";
+import {Menu, NewColor, Colors} from "./containers";
 
 class App extends React.Component{
 
@@ -27,9 +25,9 @@ class App extends React.Component{
         const {colors, sort} = this.store.getState();
         return(
             <div className='app'>
-                <SortMenu />
-                <AddColorForm />
-                <ColorList />
+                <Menu />
+                <NewColor />
+                <Colors />
             </div>
         );
     }

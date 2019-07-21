@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {addColor} from "../ch8/actions";
 
-export const AddColorForm = (props, {store}) => {
+export const AddColorForm = ({onNewColor}) => {
     let _title, _color;
 
     const submit = e => {
         e.preventDefault();
-        store.dispatch(addColor(_title.value, _color.value));
+        onNewColor(_title.value, _color.value);
         _title.value = '';
         _color.value = '#000000';
         _title.focus()
@@ -20,8 +18,4 @@ export const AddColorForm = (props, {store}) => {
             <button>ADD</button>
         </form>
     )
-};
-
-AddColorForm.contextTypes = {
-    store: PropTypes.object
 };
