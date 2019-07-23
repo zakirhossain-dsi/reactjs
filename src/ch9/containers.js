@@ -1,26 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {addColor, rateColor, removeColor, sortColors} from "../ch8/actions";
 import SortMenu from "./ui/SortMenu";
 import {AddColorForm} from "./ui/AddColorForm";
 import {ColorList} from "./ui/ColorList";
 import {sortFunction} from "../lib/array-helpers";
+import {connect} from "react-redux";
 
-export const Menu = (props, {store}) =>
-    <SortMenu sort={store.getState().sort} onSelect={sortBy => store.dispatch(sortColors(sortBy))} />;
+export const Menu = connect(state => ({sort: state.sort}), dispatch => ({
+    onSelect: sortBy => dispatch(sortColors(sortBy))
+}))(SortMenu);
 
-export const NewColor = (props, {store}) =>
-    <AddColorForm onNewColor={(title, color) => store.dispatch(addColor(title, color))}/>;
+export const NewColor = connect(null, dispatch => ({
+    onNewColor(title, color){
+        dispatch(addColor(title, color))
+    }
+}))(AddColorForm);
 
-export const Colors = (props, {store}) => {
-        const { colors, sort} = store.getState();
-        const sortedColors = [...colors].sort(sortFunction(sort));
-        return <ColorList sortedColors={sortedColors}
-                   onRemove={ id => store.dispatch(removeColor(id)) }
-                   onRate={(id, rating) => store.dispatch(rateColor(id, rating))} />;
-    };
+const mapStateToProps = state => ({
+   colors: [...state.colors].sort(sortFunction(state.sort))
+});
 
-Menu.contextTypes = { store: PropTypes.object };
-NewColor.contextTypes = { store: PropTypes.object };
-Colors.contextTypes = { store: PropTypes.object };
+const mapDispatchToProps = dispatch => ({
+    onRemove(id){
+        dispatch(removeColor(id))
+    },
+    onRate(id, rating){
+        dispatch(rateColor(id, rating))
+    }
+});
 
+export const Colors = connect(mapStateToProps, mapDispatchToProps)(ColorList);

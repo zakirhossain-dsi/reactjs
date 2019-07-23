@@ -2,12 +2,12 @@ import React from 'react';
 import StarRating from "../StarRating";
 import 'bootstrap/dist/css/bootstrap.css';
 
-export const ColorList = ({sortedColors, onRemove, onRate}) => {
+export const ColorList = ({colors, onRemove, onRate}) => {
     return (
         <div>
             {
-                sortedColors.length === 0 ? <p>No color Listed. (Add a color)</p> :
-                    sortedColors.map(color => <Color key={color.id} {...color} onRemove={onRemove} onRate={onRate}/>)
+                colors.length === 0 ? <p>No color Listed. (Add a color)</p> :
+                    colors.map(color => <Color key={color.id} {...color} onRemove={onRemove} onRate={onRate}/>)
             }
         </div>
     );
