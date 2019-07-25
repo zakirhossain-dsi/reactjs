@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const AddColorForm = ({onNewColor = f => f}) => {
     let _title, _color;
@@ -19,3 +20,7 @@ export const AddColorForm = ({onNewColor = f => f}) => {
         </form>
     )
 };
+
+AddColorForm.propTypes = {
+    onNewColor: PropTypes.func
+}

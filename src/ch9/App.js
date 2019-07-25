@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu, NewColor, Colors} from "./containers";
+import {Menu, NewColor, Colors} from './containers';
 
 class App extends React.Component{
 

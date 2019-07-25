@@ -1,5 +1,5 @@
 import React from 'react';
-import {AlarmClock} from "./ch7/alarmclock-display";
+import {AlarmClock} from './ch7/alarmclock-display';
 import ReactDOM from 'react-dom';
 
 const compose = (...fns) => (args) => fns.reduce((composed, f) => f(composed), args);
@@ -22,7 +22,7 @@ const prependZero = key => clockTime => ({...clockTime, [key]: clockTime[key] < 
 const render = Component => civilianTime =>
 {
     ReactDOM.render(<Component {...civilianTime} />, document.getElementById('root'))
-}
+};
 
 export const startTicking = () => setInterval(compose(clear, getCurrentTime, serializeClockTime, convertToCivilianTime, doubleDigits, formatClock('hh:mm:ss tt'), display(log)), oneSecond());
 

@@ -11,7 +11,6 @@ export const color = (state={}, action) => {
                 rating: 0
             };
         case C.RATE_COLOR: {
-
             return (state.id !== action.id) ? state :
                 {
                     ...state,
@@ -40,7 +39,7 @@ export const colors = (state=[], action) => {
     }
 };
 
-export const sort = (state="SORTED_BY_DATE", action) => {
+export const sort = (state='SORTED_BY_DATE', action) => {
     switch (action.type) {
         case C.SORT_COLORS:
             return action.sortBy;

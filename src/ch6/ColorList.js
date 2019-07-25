@@ -1,6 +1,7 @@
 import React from 'react';
-import StarRating from "./StarRating";
+import StarRating from './StarRating';
 import 'bootstrap/dist/css/bootstrap.css';
+import PropTypes from 'prop-types';
 
 export const ColorList = ({colors=[], onRemove=f=>f, onRate=f=>f}) =>
     <div>
@@ -19,3 +20,18 @@ export const Color = ({title, color, rating=0, onRemove=f=>f, onRate=f=>f}) =>
             <StarRating starsSelected={rating} onRate={onRate}/>
         </div>
     </section>
+
+ColorList.propTypes = {
+    colors: PropTypes.array,
+    onRemove: PropTypes.func,
+    onRate: PropTypes.func
+};
+
+Color.propTypes = {
+    id: PropTypes.string,
+    title: PropTypes.string,
+    color: PropTypes.string,
+    rating: PropTypes.number,
+    onRate: PropTypes.func,
+    onRemove: PropTypes.func
+};
