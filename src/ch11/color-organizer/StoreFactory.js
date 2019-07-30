@@ -1,5 +1,5 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import { colors, sort } from './reducers';
+import { colors } from './reducers';
 
 const logger  = store => next => action => {
     console.groupCollapsed('dispatching', action.type);
@@ -15,7 +15,7 @@ const saver = store => next => action => {
     localStorage['redux-store'] = JSON.stringify(store.getState());
 };
 
-const storeFactory = initialState => applyMiddleware(logger, saver)(createStore)(combineReducers({colors, sort}), initialState);
+const storeFactory = initialState => applyMiddleware(logger, saver)(createStore)(combineReducers({colors}), initialState);
 
 // export const store = createStore(combineReducers({colors, sort}), storeData);
 export default storeFactory;

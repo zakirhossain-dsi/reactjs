@@ -25,6 +25,5 @@ export const initialState ={
             'rating': 5,
             'timestamp': 'Wed Mar 9 2016 03:26:00 GMT-0800 (PST)'
         }
-    ],
-    sort: 'SORTED_BY_DATE'
+    ]
 };

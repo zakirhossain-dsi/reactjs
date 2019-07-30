@@ -10,12 +10,3 @@ export const addColor = (title, color) => ({
     color,
     timestamp: new Date().toString()
 });
-
-export const sortColors = sortedBy => {
-    if ('rating' === sortedBy)
-        return ({type: C.SORT_COLORS, sortBy: 'SORTED_BY_RATING'});
-    else if ('title' === sortedBy)
-        return ({type: C.SORT_COLORS, sortBy: 'SORTED_BY_TITLE'});
-    else
-        return ({type: C.SORT_COLORS, sortBy: 'SORTED_BY_DATE'});
-};

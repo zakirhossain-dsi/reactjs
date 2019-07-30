@@ -1,15 +1,19 @@
 import React from 'react';
-import {Menu, NewColor, Color, Colors} from './containers';
+import {NewColor, Color, Colors} from './containers';
 import {Route, Switch} from 'react-router-dom';
+import Menu from './ui/Menu';
 
 const App = () =>
     <Switch>
         <Route exact path='/:id' component={Color} />
         <Route path='/' component ={() =>
             <div className='app'>
-                <Menu/>
+                <Route component={Menu} />
                 <NewColor/>
-                <Colors/>
+                <Switch>
+                    <Route exact path='/' component={Colors}/>
+                    <Route path='/sort/:sort' component={Colors}/>
+                </Switch>
             </div>
         } />
     </Switch>
