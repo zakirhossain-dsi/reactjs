@@ -1,22 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
-import App from './ch11/color-organizer/App';
-import storeFactory from './ch11/color-organizer/StoreFactory';
-import {initialState} from './ch11/color-organizer/InitialState';
-import './index.css';
-import Provider from 'react-redux/es/components/Provider';
-import {HashRouter} from 'react-router-dom';
+import React from 'react'
+import { render } from 'react-dom'
+import Menu from './ch12/components/Menu'
 
-const store = storeFactory(initialState);
-
-const render = ()=> ReactDOM.render(
-    <Provider store={store}>
-        <HashRouter>
-            <App />
-        </HashRouter>
-    </Provider>,
-    document.getElementById('root'));
-render();
-
-serviceWorker.unregister();
+window.React = React
+alert('bundle loaded, Rendering in browser')
+render(
+    <Menu recipes={__DATA__} />,
+    document.getElementById('react-container')
+)
+alert('render complete')

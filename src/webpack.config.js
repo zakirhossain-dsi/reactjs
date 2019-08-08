@@ -2,7 +2,7 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: './index.js',
+    entry: './src/index.js',
     output: {
         path: '/Users/zakir/projects/helloreact/public/assets',
         filename: 'bundle.js',
@@ -25,7 +25,6 @@ module.exports = {
                     loader: 'postcss-loader',
                     options: {plugins: () => [require('autoprefixer')]}
                 }]
-
             }
         ]
     },
